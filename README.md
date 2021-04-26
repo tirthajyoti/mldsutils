@@ -15,30 +15,40 @@ This file will become your README and also the index of your documentation.
 - Generate some synthetic data
 - Run the `run_regressor` function to iterate through each of them and evaluate the given datatset
 
+### Import
+
 ```python
 from mldsutils.mldsutils import *
 from sklearn.linear_model import LinearRegression, Lasso, Ridge
 import numpy as np
 ```
 
+### Regressors and their names
+
 ```python
 reg_names = ["Linear regression","L1 (LASSO) regression","Ridge regression"]
 regressors = [LinearRegression(n_jobs=-1),
               Lasso(alpha=0.1),
               Ridge(alpha=0.1)]
+```
 
+### Some data
+
+```python
 X = np.random.normal(size=200)
-y = 2*X+3+np.random.uniform(1,2,size=200)
+y = 2*X+3+np.random.uniform(1,2,size=200) # A linear relationship with a small noise added
+```
+
+### Run
+Note, you will get back a Pandas DataFrame from this
+
+```python
 d1 = run_regressors(X,y,regressors,metric='r2',runtime=False,verbose=True)
 ```
 
-    Finished 10 runs for LinearRegression algorithm
-    ---------------------------------------------------------------------------
-    Finished 10 runs for Lasso algorithm
-    ---------------------------------------------------------------------------
-    Finished 10 runs for Ridge algorithm
-    ---------------------------------------------------------------------------
-    
+### Let's see the DataFrame
+
+It shows the $R^2$ score for three estimators with 10 runs.
 
 ```python
 d1
