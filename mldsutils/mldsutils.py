@@ -6,7 +6,6 @@ __all__ = ['rename_duplicates', 'run_classifiers', 'plot_bars', 'run_regressors'
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 import time
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
