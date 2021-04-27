@@ -49,6 +49,7 @@ Note, you will get back a Pandas DataFrame from this
 ```python
 d1,d2 = run_classifiers(X1,y1,
                         clf_lst=classifiers,names = clf_names,
+                        runtime=True,
                         metric='f1',verbose=True)
 ```
 
@@ -97,63 +98,63 @@ d1
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.987013</td>
-      <td>0.979021</td>
-      <td>0.642857</td>
+      <td>0.970667</td>
+      <td>0.946292</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.987893</td>
-      <td>0.972705</td>
-      <td>0.000000</td>
+      <td>0.978378</td>
+      <td>0.961637</td>
+      <td>0.661074</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.984293</td>
-      <td>0.983213</td>
-      <td>0.655462</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.984925</td>
-      <td>0.972093</td>
+      <td>0.971576</td>
+      <td>0.947891</td>
       <td>0.644068</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>0.992908</td>
-      <td>0.976636</td>
+      <th>3</th>
+      <td>0.992556</td>
+      <td>0.956743</td>
       <td>0.000000</td>
     </tr>
     <tr>
+      <th>4</th>
+      <td>0.995000</td>
+      <td>0.948980</td>
+      <td>0.646362</td>
+    </tr>
+    <tr>
       <th>5</th>
-      <td>0.992405</td>
-      <td>0.967901</td>
-      <td>0.009950</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0.973761</td>
-      <td>0.966507</td>
-      <td>0.009804</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>0.977887</td>
-      <td>0.990291</td>
+      <td>0.979275</td>
+      <td>0.939314</td>
       <td>0.648649</td>
     </tr>
     <tr>
+      <th>6</th>
+      <td>0.978417</td>
+      <td>0.949062</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.984456</td>
+      <td>0.931217</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
       <th>8</th>
-      <td>0.991870</td>
-      <td>0.990521</td>
+      <td>0.961240</td>
+      <td>0.963351</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.987593</td>
-      <td>0.974747</td>
-      <td>0.264317</td>
+      <td>0.976526</td>
+      <td>0.958115</td>
+      <td>0.665552</td>
     </tr>
   </tbody>
 </table>
@@ -202,35 +203,35 @@ d1.describe().T
     <tr>
       <th>k-Nearest Neighbors(3)</th>
       <td>10.0</td>
-      <td>0.986055</td>
-      <td>0.006236</td>
-      <td>0.973761</td>
-      <td>0.984451</td>
-      <td>0.987303</td>
-      <td>0.990876</td>
-      <td>0.992908</td>
+      <td>0.978809</td>
+      <td>0.010089</td>
+      <td>0.961240</td>
+      <td>0.972814</td>
+      <td>0.978398</td>
+      <td>0.983161</td>
+      <td>0.995000</td>
     </tr>
     <tr>
       <th>Support Vector Machine with Linear Kernel</th>
       <td>10.0</td>
-      <td>0.977364</td>
-      <td>0.008442</td>
-      <td>0.966507</td>
-      <td>0.972246</td>
-      <td>0.975691</td>
-      <td>0.982165</td>
-      <td>0.990521</td>
+      <td>0.950260</td>
+      <td>0.010063</td>
+      <td>0.931217</td>
+      <td>0.946691</td>
+      <td>0.949021</td>
+      <td>0.957772</td>
+      <td>0.963351</td>
     </tr>
     <tr>
       <th>Support Vector Machine with RBF Kernel</th>
       <td>10.0</td>
-      <td>0.287511</td>
-      <td>0.320052</td>
+      <td>0.326570</td>
+      <td>0.344294</td>
       <td>0.000000</td>
-      <td>0.002451</td>
-      <td>0.137134</td>
-      <td>0.643765</td>
-      <td>0.655462</td>
+      <td>0.000000</td>
+      <td>0.322034</td>
+      <td>0.648077</td>
+      <td>0.665552</td>
     </tr>
   </tbody>
 </table>
@@ -273,63 +274,63 @@ d2
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.000</td>
-      <td>19.529</td>
-      <td>128.902</td>
+      <td>0.978</td>
+      <td>23.525</td>
+      <td>142.145</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.000</td>
-      <td>17.581</td>
-      <td>138.664</td>
+      <td>26.323</td>
+      <td>138.665</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.000</td>
-      <td>27.340</td>
-      <td>142.638</td>
+      <td>0.978</td>
+      <td>26.365</td>
+      <td>135.692</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.977</td>
-      <td>19.531</td>
-      <td>125.963</td>
+      <td>0.976</td>
+      <td>26.403</td>
+      <td>113.238</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.956</td>
-      <td>19.528</td>
-      <td>139.639</td>
+      <td>0.978</td>
+      <td>23.444</td>
+      <td>123.922</td>
     </tr>
     <tr>
       <th>5</th>
       <td>0.000</td>
-      <td>16.598</td>
-      <td>124.063</td>
+      <td>21.479</td>
+      <td>150.983</td>
     </tr>
     <tr>
       <th>6</th>
       <td>0.000</td>
-      <td>15.672</td>
-      <td>124.171</td>
+      <td>21.483</td>
+      <td>127.956</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0.976</td>
-      <td>20.506</td>
-      <td>135.868</td>
+      <td>0.000</td>
+      <td>26.400</td>
+      <td>132.321</td>
     </tr>
     <tr>
       <th>8</th>
       <td>0.000</td>
-      <td>22.464</td>
-      <td>152.332</td>
+      <td>22.457</td>
+      <td>123.329</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.000</td>
-      <td>20.490</td>
-      <td>123.982</td>
+      <td>0.981</td>
+      <td>22.422</td>
+      <td>119.792</td>
     </tr>
   </tbody>
 </table>
@@ -376,35 +377,35 @@ d2.describe().T
     <tr>
       <th>k-Nearest Neighbors(3)</th>
       <td>10.0</td>
-      <td>0.2909</td>
-      <td>0.468427</td>
+      <td>0.4891</td>
+      <td>0.515558</td>
       <td>0.000</td>
       <td>0.00000</td>
-      <td>0.000</td>
-      <td>0.71700</td>
-      <td>0.977</td>
+      <td>0.4880</td>
+      <td>0.97800</td>
+      <td>0.981</td>
     </tr>
     <tr>
       <th>Support Vector Machine with Linear Kernel</th>
       <td>10.0</td>
-      <td>19.9239</td>
-      <td>3.286444</td>
-      <td>15.672</td>
-      <td>18.06775</td>
-      <td>19.530</td>
-      <td>20.50200</td>
-      <td>27.340</td>
+      <td>24.0301</td>
+      <td>2.124234</td>
+      <td>21.479</td>
+      <td>22.43075</td>
+      <td>23.4845</td>
+      <td>26.35450</td>
+      <td>26.403</td>
     </tr>
     <tr>
       <th>Support Vector Machine with RBF Kernel</th>
       <td>10.0</td>
-      <td>133.6222</td>
-      <td>9.733031</td>
-      <td>123.982</td>
-      <td>124.61900</td>
-      <td>132.385</td>
-      <td>139.39525</td>
-      <td>152.332</td>
+      <td>130.8043</td>
+      <td>11.377251</td>
+      <td>113.238</td>
+      <td>123.47725</td>
+      <td>130.1385</td>
+      <td>137.92175</td>
+      <td>150.983</td>
     </tr>
   </tbody>
 </table>

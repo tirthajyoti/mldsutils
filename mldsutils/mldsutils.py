@@ -201,8 +201,8 @@ def run_regressors(X,y,
                     reg_lst = [LinearRegression(n_jobs=-1)],names=None,
                     num_runs=10,test_frac=0.2,scaling=True,
                     metric='rmse',
-                    runtime=True,
-                    verbose=0):
+                    runtime=False,
+                    verbose=True):
     """
     ### Description
 
