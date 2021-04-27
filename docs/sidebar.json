@@ -2,6 +2,6 @@
   "mldsutils": {
     "Overview": "/",
     "mldsutils": "mldsutils.html",
-    "`plots` module": "plots.html"
+    "Plotting module": "plots.html"
   }
 }

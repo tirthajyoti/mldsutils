@@ -13,7 +13,7 @@ entries:
       title: mldsutils
       url: mldsutils.html
     - output: web,pdf
-      title: '`plots` module'
+      title: Plotting module
       url: plots.html
     output: web
     title: mldsutils
