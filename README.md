@@ -6,7 +6,7 @@
 
 `pip install mldsutils`
 
-## How to use
+## How to use `mldsutils.mldsutils`
 
 - Import the library
 - Define a list of Scikit-learn estimators with your choice of hyperparameters
@@ -432,4 +432,25 @@ plot_bars(d2,t1="Mean fitting time of algorithms",
 
 
 ![png](docs/images/output_21_0.png)
+
+
+## How to use `mldsutils.plots`
+
+```python
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.datasets import make_classification
+import matplotlib.pyplot as plt
+from mldsutils.plots import *
+        
+X1, y1 = make_classification(n_features=10, n_samples=100,
+                                     n_redundant=0, n_informative=10,
+                                     n_clusters_per_class=1,class_sep=0.5)
+plt.figure()
+plt.title("KNN decision boundary with neighbors: 5",fontsize=16)
+plot_decision_boundaries(X1,y1,KNeighborsClassifier,n_neighbors=5)
+plt.show()
+```
+
+
+![png](docs/images/output_23_0.png)
 

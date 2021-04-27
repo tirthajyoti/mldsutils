@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: mldsutils
       url: mldsutils.html
+    - output: web,pdf
+      title: Title
+      url: plots.html
     output: web
     title: mldsutils
   output: web

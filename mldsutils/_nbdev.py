@@ -5,7 +5,8 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"rename_duplicates": "00_mldsutils.ipynb",
          "run_classifiers": "00_mldsutils.ipynb",
          "plot_bars": "00_mldsutils.ipynb",
-         "run_regressors": "00_mldsutils.ipynb"}
+         "run_regressors": "00_mldsutils.ipynb",
+         "plot_decision_boundaries": "01_plots.ipynb"}
 
 modules = ["mldsutils.py"]
 
