@@ -9,8 +9,8 @@ index = {"rename_duplicates": "00_mldsutils.ipynb",
 
 modules = ["mldsutils.py"]
 
-doc_url = "https://Tirtha.github.io/mldsutils/"
+doc_url = "https://tirthajyoti.github.io/mldsutils/"
 
-git_url = "https://github.com/Tirtha/mldsutils/tree/master/"
+git_url = "https://github.com/tirthajyoti/mldsutils/tree/master/"
 
 def custom_doc_links(name): return None
