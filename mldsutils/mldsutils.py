@@ -49,32 +49,58 @@ def run_classifiers(X,y,
                     clf_lst = [LogisticRegression(C=0.1,n_jobs=-1)],names=None,
                     num_runs=10,test_frac=0.2,scaling=True,
                     metric='accuracy',
-                    runtime=True,
+                    runtime=False,
                     verbose=True):
     """
+    ### Description
+
     Runs through the list of classifiers for a given number of times
 
-    Args:
-        X: numpy.ndarray, feature array in the shape of (MxN).
-        If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
-        y: numpy.ndarray, output array in the shape of (Mx1).
-        If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
-        clf_lst: list/tutple, A list/tuple of Scikit-learn estimator objects
-        names: list/tuple, Names (human-readable) of the estimators
-        num_runs: int, Number of runs (fitting) per model
-        test_frac: float, Test set fraction
-        scaling: bool, flag to run StandardScaler on the data, default True
-        metric: str, name of the ML metric user is interested in. Currently, could be one of `accuracy` or `f1`
-        runtime: bool, calculates and returns the fitting time (in milliseconds) along with the ML metric
-        verbose: bool, if True prints a single-line message after each estimator finishes {num_runs} runs
+    ### Args:
 
-    Returns:
-        df_scores: A Pandas DataFrame of scores i.e. ML metrics that was requested
-        df_runtimes: A Pandas DataFrame of fitting times for all the runs and algorithm
+    `X`: numpy.ndarray, feature array in the shape of (*M X N*).
+    If an array with shape (*M*,) is passed, the function coerces it to (*M X 1*) shape
 
-    Example:
-        X1, y1 = make_classification(n_features=20, n_samples=2000,n_redundant=0, n_informative=20,
-                             n_clusters_per_class=1)
+    `y`: numpy.ndarray, output array in the shape of (*M X 1*).
+    If an array with shape (*M*,) is passed, the function coerces it to (*M X 1*) shape
+
+    `clf_lst`: list/tutple, A list/tuple of Scikit-learn estimator objects (classifiers)
+
+    `names`: list/tuple of strings, Human-readable names/descriptions of the estimators
+    e.g. ***Support Vector Machine with Linear Kernel and C=0.025*** for an estimator object `SVC(kernel="linear", C=0.025)`.
+    If not supplied explicitly, then the function tries to extract a suitable name from the estimator class but the result is not optimal.
+
+    `num_runs`: int, Number of runs (fitting) per model
+
+    `test_frac`: float, Test set fraction
+
+    `scaling`: bool, flag to run `StandardScaler` on the data, default `True`
+
+    `metric`: str, name of the ML metric user is interested in. Currently, could be `accuracy` or `f1`
+
+    `runtime`: bool, if `True`, calculates and returns the fitting time (in milliseconds) along with the ML metric
+
+    `verbose`: bool, if `True`, prints a single-line message after each estimator finishes `num_runs` runs
+
+    ### Returns:
+
+    `df_scores`: A Pandas DataFrame of score i.e. ML metric that was requested for all the runs.
+    If `num_runs=10` then you will have 10 rows in this dataframe. Each classifier/estimator will be a separate column.
+
+    `df_runtimes`: A Pandas DataFrame of the training times (in milliseconds) for all the runs and estimators.
+
+    ### Example:
+
+        from sklearn.datasets import make_classification
+        from sklearn.neighbors import KNeighborsClassifier
+        from sklearn.svm import SVC
+        from .mldsutils import run_classifiers
+
+        X1, y1 = make_classification(n_features=20,
+                                     n_samples=2000,
+                                     n_redundant=0,
+                                     n_informative=20,
+                                     n_clusters_per_class=1)
 
         classifiers = [
             KNeighborsClassifier(3),
@@ -86,7 +112,8 @@ def run_classifiers(X,y,
                     'Support Vector Machine with RBF Kernel']
 
         d1,d2 = run_classifiers(X1,y1,
-                                clf_lst=classifiers,names = clf_names,
+                                clf_lst=classifiers,
+                                names = clf_names,
                                 metric='f1',verbose=True)
     """
     if names is None:
@@ -177,37 +204,44 @@ def run_regressors(X,y,
                     runtime=True,
                     verbose=0):
     """
-    Runs through the list of regressors for a given number of times
+    ### Description
 
-    Args:
+    Runs through the list of classifiers for a given number of times
 
-    `X`: numpy.ndarray, feature array in the shape of (MxN). If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
+    ### Args:
 
-    `y`: numpy.ndarray, output array in the shape of (Mx1). If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
+    `X`: numpy.ndarray, feature array in the shape of (*M X N*).
+    If an array with shape (*M*,) is passed, the function coerces it to (*M X 1*) shape
+
+    `y`: numpy.ndarray, output array in the shape of (*M X 1*).
+    If an array with shape (*M*,) is passed, the function coerces it to (*M X 1*) shape
 
     `reg_lst`: list/tutple, A list/tuple of Scikit-learn estimator objects (regressors)
 
-    `names`: list/tuple, Names (human-readable) of the estimators
+    `names`: list/tuple of strings, Human-readable names/descriptions of the estimators
+    e.g. ***LASSO regression with alpha=0.1*** for an estimator object `Lasso(alpha=0.1)`.
+    If not supplied explicitly, then the function tries to extract a suitable name from the estimator class but the result is not optimal.
 
     `num_runs`: int, Number of runs (fitting) per model
 
     `test_frac`: float, Test set fraction
 
-    `scaling`: bool, flag to run StandardScaler on the data, default True
+    `scaling`: bool, flag to run `StandardScaler` on the data, default `True`
 
     `metric`: str, name of the ML metric user is interested in. Currently, could be `rmse` or `r2`
 
-    `runtime`: bool, calculates and returns the fitting time (in milliseconds) along with the ML metric
+    `runtime`: bool, if `True`, calculates and returns the fitting time (in milliseconds) along with the ML metric
 
-    `verbose`: bool, if True prints a single-line message after each estimator finishes {num_runs} runs
+    `verbose`: bool, if `True`, prints a single-line message after each estimator finishes `num_runs` runs
 
-    Returns:
+    ### Returns:
 
-    `df_scores`: A Pandas DataFrame of scores i.e. ML metrics that was requested
+    `df_scores`: A Pandas DataFrame of score i.e. ML metric that was requested for all the runs.
+    If `num_runs=10` then you will have 10 rows in this dataframe. Each regressor/estimator will be a separate column.
 
-    `df_runtimes`: A Pandas DataFrame of fitting times for all the runs and algorithm
+    `df_runtimes`: A Pandas DataFrame of the training times (in milliseconds) for all the runs and estimators.
 
-    Example:
+    ### Example:
 
         from .mldsutils import *
         from sklearn.linear_model import LinearRegression, Lasso, Ridge
