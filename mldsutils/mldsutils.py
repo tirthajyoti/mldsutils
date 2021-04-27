@@ -180,24 +180,35 @@ def run_regressors(X,y,
     Runs through the list of regressors for a given number of times
 
     Args:
-        X: numpy.ndarray, feature array in the shape of (MxN).
-        If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
-        y: numpy.ndarray, output array in the shape of (Mx1).
-        If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
-        reg_lst: list/tutple, A list/tuple of Scikit-learn estimator objects (regressors)
-        names: list/tuple, Names (human-readable) of the estimators
-        num_runs: int, Number of runs (fitting) per model
-        test_frac: float, Test set fraction
-        scaling: bool, flag to run StandardScaler on the data, default True
-        metric: str, name of the ML metric user is interested in. Currently, could be `rmse` or `r2`
-        runtime: bool, calculates and returns the fitting time (in milliseconds) along with the ML metric
-        verbose: bool, if True prints a single-line message after each estimator finishes {num_runs} runs
+
+    `X`: numpy.ndarray, feature array in the shape of (MxN). If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
+
+    `y`: numpy.ndarray, output array in the shape of (Mx1). If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
+
+    `reg_lst`: list/tutple, A list/tuple of Scikit-learn estimator objects (regressors)
+
+    `names`: list/tuple, Names (human-readable) of the estimators
+
+    `num_runs`: int, Number of runs (fitting) per model
+
+    `test_frac`: float, Test set fraction
+
+    `scaling`: bool, flag to run StandardScaler on the data, default True
+
+    `metric`: str, name of the ML metric user is interested in. Currently, could be `rmse` or `r2`
+
+    `runtime`: bool, calculates and returns the fitting time (in milliseconds) along with the ML metric
+
+    `verbose`: bool, if True prints a single-line message after each estimator finishes {num_runs} runs
 
     Returns:
-        df_scores: A Pandas DataFrame of scores i.e. ML metrics that was requested
-        df_runtimes: A Pandas DataFrame of fitting times for all the runs and algorithm
+
+    `df_scores`: A Pandas DataFrame of scores i.e. ML metrics that was requested
+
+    `df_runtimes`: A Pandas DataFrame of fitting times for all the runs and algorithm
 
     Example:
+
         from .mldsutils import *
         from sklearn.linear_model import LinearRegression, Lasso, Ridge
         import numpy as np

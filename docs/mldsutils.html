@@ -490,28 +490,27 @@ Finished 10 runs for Support Vector Machine with RBF Kernel algorithm
 <h4 id="run_regressors" class="doc_header"><code>run_regressors</code><a href="https://github.com/Tirtha/mldsutils/tree/master/mldsutils/mldsutils.py#L173" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>run_regressors</code>(<strong><code>X</code></strong>, <strong><code>y</code></strong>, <strong><code>reg_lst</code></strong>=<em><code>[LinearRegression(n_jobs=-1)]</code></em>, <strong><code>names</code></strong>=<em><code>None</code></em>, <strong><code>num_runs</code></strong>=<em><code>10</code></em>, <strong><code>test_frac</code></strong>=<em><code>0.2</code></em>, <strong><code>scaling</code></strong>=<em><code>True</code></em>, <strong><code>metric</code></strong>=<em><code>'rmse'</code></em>, <strong><code>runtime</code></strong>=<em><code>True</code></em>, <strong><code>verbose</code></strong>=<em><code>0</code></em>)</p>
 </blockquote>
 <p>Runs through the list of regressors for a given number of times</p>
-<p>Args:
-    X: numpy.ndarray, feature array in the shape of (MxN).
-    If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
-    y: numpy.ndarray, output array in the shape of (Mx1).
-    If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
-    reg_lst: list/tutple, A list/tuple of Scikit-learn estimator objects (regressors)
-    names: list/tuple, Names (human-readable) of the estimators
-    num_runs: int, Number of runs (fitting) per model
-    test_frac: float, Test set fraction
-    scaling: bool, flag to run StandardScaler on the data, default True
-    metric: str, name of the ML metric user is interested in. Currently, could be <code>rmse</code> or <code>r2</code>
-    runtime: bool, calculates and returns the fitting time (in milliseconds) along with the ML metric
-    verbose: bool, if True prints a single-line message after each estimator finishes {num_runs} runs</p>
-<p>Returns:
-    df_scores: A Pandas DataFrame of scores i.e. ML metrics that was requested
-    df_runtimes: A Pandas DataFrame of fitting times for all the runs and algorithm</p>
-<p>Example:
-    from .mldsutils import *
-    from sklearn.linear_model import LinearRegression, Lasso, Ridge
-    import numpy as np</p>
+<p>Args:</p>
+<p><code>X</code>: numpy.ndarray, feature array in the shape of (MxN). If an array with shape (M,) is passed, the function coerces it to (Mx1) shape</p>
+<p><code>y</code>: numpy.ndarray, output array in the shape of (Mx1). If an array with shape (M,) is passed, the function coerces it to (Mx1) shape</p>
+<p><code>reg_lst</code>: list/tutple, A list/tuple of Scikit-learn estimator objects (regressors)</p>
+<p><code>names</code>: list/tuple, Names (human-readable) of the estimators</p>
+<p><code>num_runs</code>: int, Number of runs (fitting) per model</p>
+<p><code>test_frac</code>: float, Test set fraction</p>
+<p><code>scaling</code>: bool, flag to run StandardScaler on the data, default True</p>
+<p><code>metric</code>: str, name of the ML metric user is interested in. Currently, could be <code>rmse</code> or <code>r2</code></p>
+<p><code>runtime</code>: bool, calculates and returns the fitting time (in milliseconds) along with the ML metric</p>
+<p><code>verbose</code>: bool, if True prints a single-line message after each estimator finishes {num_runs} runs</p>
+<p>Returns:</p>
+<p><code>df_scores</code>: A Pandas DataFrame of scores i.e. ML metrics that was requested</p>
+<p><code>df_runtimes</code>: A Pandas DataFrame of fitting times for all the runs and algorithm</p>
+<p>Example:</p>
 
-<pre><code>reg_names = ["Linear regression","L1 (LASSO) regression","Ridge regression"]
+<pre><code>from .mldsutils import *
+from sklearn.linear_model import LinearRegression, Lasso, Ridge
+import numpy as np
+
+reg_names = ["Linear regression","L1 (LASSO) regression","Ridge regression"]
 regressors = [LinearRegression(n_jobs=-1),Lasso(alpha=0.1),Ridge(alpha=0.1)]
 
 X = np.random.normal(size=200)
