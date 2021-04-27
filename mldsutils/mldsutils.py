@@ -50,15 +50,55 @@ def run_classifiers(X,y,
                     num_runs=10,test_frac=0.2,scaling=True,
                     metric='accuracy',
                     runtime=True,
-                    verbose=0):
+                    verbose=True):
     """
     Runs through the list of classifiers for a given number of times
+
+    Args:
+        X: numpy.ndarray, feature array in the shape of (MxN).
+        If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
+        y: numpy.ndarray, output array in the shape of (Mx1).
+        If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
+        clf_lst: list/tutple, A list/tuple of Scikit-learn estimator objects
+        names: list/tuple, Names (human-readable) of the estimators
+        num_runs: int, Number of runs (fitting) per model
+        test_frac: float, Test set fraction
+        scaling: bool, flag to run StandardScaler on the data, default True
+        metric: str, name of the ML metric user is interested in. Currently, could be one of `accuracy` or `f1`
+        runtime: bool, calculates and returns the fitting time (in milliseconds) along with the ML metric
+        verbose: bool, if True prints a single-line message after each estimator finishes {num_runs} runs
+
+    Returns:
+        df_scores: A Pandas DataFrame of scores i.e. ML metrics that was requested
+        df_runtimes: A Pandas DataFrame of fitting times for all the runs and algorithm
+
+    Example:
+        X1, y1 = make_classification(n_features=20, n_samples=2000,n_redundant=0, n_informative=20,
+                             n_clusters_per_class=1)
+
+        classifiers = [
+            KNeighborsClassifier(3),
+            SVC(kernel="linear", C=0.025),
+            SVC(gamma=2, C=10),]
+
+        clf_names = ['k-Nearest Neighbors(3)',
+                     'Support Vector Machine with Linear Kernel',
+                    'Support Vector Machine with RBF Kernel']
+
+        d1,d2 = run_classifiers(X1,y1,
+                                clf_lst=classifiers,names = clf_names,
+                                metric='f1',verbose=True)
     """
     if names is None:
         names = [str(type(c)).split('.')[-1][:-2] for c in clf_lst]
         names = list(rename_duplicates(names))
 
     assert len(names)==len(clf_lst), print("Length of the classifier names and list of classifiers did not match.")
+
+    if len(X.shape)==1:
+        X = X.reshape(-1,1)
+    if len(y.shape)==1:
+        y = y.reshape(-1,1)
 
     scores = dict.fromkeys(names,[])
     if runtime:
@@ -137,7 +177,38 @@ def run_regressors(X,y,
                     runtime=True,
                     verbose=0):
     """
-    Runs through the list of classifiers for a given number of times
+    Runs through the list of regressors for a given number of times
+
+    Args:
+        X: numpy.ndarray, feature array in the shape of (MxN).
+        If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
+        y: numpy.ndarray, output array in the shape of (Mx1).
+        If an array with shape (M,) is passed, the function coerces it to (Mx1) shape
+        reg_lst: list/tutple, A list/tuple of Scikit-learn estimator objects (regressors)
+        names: list/tuple, Names (human-readable) of the estimators
+        num_runs: int, Number of runs (fitting) per model
+        test_frac: float, Test set fraction
+        scaling: bool, flag to run StandardScaler on the data, default True
+        metric: str, name of the ML metric user is interested in. Currently, could be `rmse` or `r2`
+        runtime: bool, calculates and returns the fitting time (in milliseconds) along with the ML metric
+        verbose: bool, if True prints a single-line message after each estimator finishes {num_runs} runs
+
+    Returns:
+        df_scores: A Pandas DataFrame of scores i.e. ML metrics that was requested
+        df_runtimes: A Pandas DataFrame of fitting times for all the runs and algorithm
+
+    Example:
+        from .mldsutils import *
+        from sklearn.linear_model import LinearRegression, Lasso, Ridge
+        import numpy as np
+
+        reg_names = ["Linear regression","L1 (LASSO) regression","Ridge regression"]
+        regressors = [LinearRegression(n_jobs=-1),Lasso(alpha=0.1),Ridge(alpha=0.1)]
+
+        X = np.random.normal(size=200)
+        y = 2*X+3+np.random.uniform(1,2,size=200)
+
+        d1 = run_regressors(X,y,regressors,metric='r2',runtime=False,verbose=True)
     """
     if names is None:
         names = [str(type(c)).split('.')[-1][:-2] for c in reg_lst]
