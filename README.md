@@ -445,8 +445,7 @@ from mldsutils.plots import *
 X1, y1 = make_classification(n_features=10, n_samples=100,
                                      n_redundant=0, n_informative=10,
                                      n_clusters_per_class=1,class_sep=0.5)
-plt.figure()
-plt.title("KNN decision boundary with neighbors: 5",fontsize=16)
+
 plot_decision_boundaries(X1,y1,KNeighborsClassifier,n_neighbors=5)
 plt.show()
 ```

@@ -349,29 +349,31 @@ def plot_decision_boundaries(X, y, model_class, **model_params):
     scatter plot.
 
     ### Arguments:
-        `X`: Feature data as a Numpy array.
+    `X`: Feature data as a Numpy array.
 
-        `y`: Label data as a Numpy array.
+    `y`: Label data as a Numpy array.
 
-        `model_class`: A Scikit-learn ML estimator class e.g. `GaussianNB` (imported from `sklearn.naive_bayes`) or
+    `model_class`: A Scikit-learn ML estimator class e.g. `GaussianNB` (imported from `sklearn.naive_bayes`) or
         `LogisticRegression` (imported from `sklearn.linear_model`)
 
-        `**model_params`: Model parameters to be passed on to the ML estimator.
+    `**model_params`: Model parameters to be passed on to the ML estimator.
+
+    ### Returns:
+    A Matplotlib figure object (`matplotlib.figure.Figure`)
 
     ### Typical code example:
 
-        ```
-        from sklearn.neighbors import KNeighborsClassifier
-        from sklearn.datasets import make_classification
+    ```
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.datasets import make_classification
 
-        X1, y1 = make_classification(n_features=10, n_samples=100,
+    X1, y1 = make_classification(n_features=10, n_samples=100,
                                      n_redundant=0, n_informative=10,
                                      n_clusters_per_class=1,class_sep=0.5)
-        plt.figure()
-        plt.title("KNN decision boundary with neighbros: 5",fontsize=16)
-        plot_decision_boundaries(X1,y1,KNeighborsClassifier,n_neighbors=5)
-        plt.show()
-        ```
+
+    _ = plot_decision_boundaries(X1,y1,KNeighborsClassifier,n_neighbors=5)
+    plt.show()
+    ```
     """
     try:
         X = np.array(X)
@@ -406,10 +408,11 @@ def plot_decision_boundaries(X, y, model_class, **model_params):
     Z = model.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)
 
     # Plotting
+    fig = plt.figure()
     plt.contourf(xx, yy, Z, alpha=0.4)
     plt.scatter(X[:, 0], X[:, 1], c=y, alpha=0.8)
     plt.xlabel("Feature-1",fontsize=15)
     plt.ylabel("Feature-2",fontsize=15)
     plt.xticks(fontsize=14)
     plt.yticks(fontsize=14)
-    return plt
+    return fig
