@@ -49,6 +49,16 @@ nb_path: "00_mldsutils.ipynb"
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="rename_duplicates" class="doc_header"><code>rename_duplicates</code><a href="https://github.com/Tirtha/mldsutils/tree/master/mldsutils/mldsutils.py#L37" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>rename_duplicates</code>(<strong><code>old</code></strong>)</p>
 </blockquote>
+<h3 id="Description:">Description:<a class="anchor-link" href="#Description:"> </a></h3><p>A simple helper function to add numeric suffix to duplicate string entries.</p>
+<h3 id="Example:">Example:<a class="anchor-link" href="#Example:"> </a></h3>
+<pre><code>for w in rename_duplicates(['Atom','Electron','Atom','Neutron','Atom']):
+    print(w)
+
+&gt;&gt; Atom
+   Electron
+   Atom_1
+   Neutron
+   Atom_2</code></pre>
 
 </div>
 
@@ -84,7 +94,7 @@ nb_path: "00_mldsutils.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="run_classifiers" class="doc_header"><code>run_classifiers</code><a href="https://github.com/Tirtha/mldsutils/tree/master/mldsutils/mldsutils.py#L48" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>run_classifiers</code>(<strong><code>X</code></strong>, <strong><code>y</code></strong>, <strong><code>clf_lst</code></strong>=<em><code>[LogisticRegression(C=0.1, n_jobs=-1)]</code></em>, <strong><code>names</code></strong>=<em><code>None</code></em>, <strong><code>num_runs</code></strong>=<em><code>10</code></em>, <strong><code>test_frac</code></strong>=<em><code>0.2</code></em>, <strong><code>scaling</code></strong>=<em><code>True</code></em>, <strong><code>metric</code></strong>=<em><code>'accuracy'</code></em>, <strong><code>runtime</code></strong>=<em><code>False</code></em>, <strong><code>verbose</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="run_classifiers" class="doc_header"><code>run_classifiers</code><a href="https://github.com/Tirtha/mldsutils/tree/master/mldsutils/mldsutils.py#L65" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>run_classifiers</code>(<strong><code>X</code></strong>, <strong><code>y</code></strong>, <strong><code>clf_lst</code></strong>=<em><code>[LogisticRegression(C=0.1, n_jobs=-1)]</code></em>, <strong><code>names</code></strong>=<em><code>None</code></em>, <strong><code>num_runs</code></strong>=<em><code>10</code></em>, <strong><code>test_frac</code></strong>=<em><code>0.2</code></em>, <strong><code>scaling</code></strong>=<em><code>True</code></em>, <strong><code>metric</code></strong>=<em><code>'accuracy'</code></em>, <strong><code>runtime</code></strong>=<em><code>False</code></em>, <strong><code>verbose</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 <h3 id="Description">Description<a class="anchor-link" href="#Description"> </a></h3><p>Runs through the list of classifiers for a given number of times</p>
 <h3 id="Args:">Args:<a class="anchor-link" href="#Args:"> </a></h3><p><code>X</code>: numpy.ndarray, feature array in the shape of (<em>M X N</em>).
@@ -164,7 +174,7 @@ d1,d2 = run_classifiers(X1,y1,
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="plot_bars" class="doc_header"><code>plot_bars</code><a href="https://github.com/Tirtha/mldsutils/tree/master/mldsutils/mldsutils.py#L178" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_bars</code>(<strong><code>d</code></strong>, <strong><code>t1</code></strong>=<em><code>'Mean accuracy score of algorithms'</code></em>, <strong><code>t2</code></strong>=<em><code>'Std.dev of the accuracy scores of algorithms'</code></em>)</p>
+<h4 id="plot_bars" class="doc_header"><code>plot_bars</code><a href="https://github.com/Tirtha/mldsutils/tree/master/mldsutils/mldsutils.py#L195" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>plot_bars</code>(<strong><code>d</code></strong>, <strong><code>t1</code></strong>=<em><code>'Mean accuracy score of algorithms'</code></em>, <strong><code>t2</code></strong>=<em><code>'Std.dev of the accuracy scores of algorithms'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -201,7 +211,7 @@ d1,d2 = run_classifiers(X1,y1,
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="run_regressors" class="doc_header"><code>run_regressors</code><a href="https://github.com/Tirtha/mldsutils/tree/master/mldsutils/mldsutils.py#L200" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>run_regressors</code>(<strong><code>X</code></strong>, <strong><code>y</code></strong>, <strong><code>reg_lst</code></strong>=<em><code>[LinearRegression(n_jobs=-1)]</code></em>, <strong><code>names</code></strong>=<em><code>None</code></em>, <strong><code>num_runs</code></strong>=<em><code>10</code></em>, <strong><code>test_frac</code></strong>=<em><code>0.2</code></em>, <strong><code>scaling</code></strong>=<em><code>True</code></em>, <strong><code>metric</code></strong>=<em><code>'rmse'</code></em>, <strong><code>runtime</code></strong>=<em><code>False</code></em>, <strong><code>verbose</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="run_regressors" class="doc_header"><code>run_regressors</code><a href="https://github.com/Tirtha/mldsutils/tree/master/mldsutils/mldsutils.py#L217" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>run_regressors</code>(<strong><code>X</code></strong>, <strong><code>y</code></strong>, <strong><code>reg_lst</code></strong>=<em><code>[LinearRegression(n_jobs=-1)]</code></em>, <strong><code>names</code></strong>=<em><code>None</code></em>, <strong><code>num_runs</code></strong>=<em><code>10</code></em>, <strong><code>test_frac</code></strong>=<em><code>0.2</code></em>, <strong><code>scaling</code></strong>=<em><code>True</code></em>, <strong><code>metric</code></strong>=<em><code>'rmse'</code></em>, <strong><code>runtime</code></strong>=<em><code>False</code></em>, <strong><code>verbose</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 <h3 id="Description">Description<a class="anchor-link" href="#Description"> </a></h3><p>Runs through the list of classifiers for a given number of times</p>
 <h3 id="Args:">Args:<a class="anchor-link" href="#Args:"> </a></h3><p><code>X</code>: numpy.ndarray, feature array in the shape of (<em>M X N</em>).
@@ -251,13 +261,6 @@ d1 = run_regressors(X,y,regressors,metric='r2',runtime=False,verbose=True)</code
 </div>
     {% endraw %}
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="A-test-of-running-the-run_regressors-function">A test of running the <a href="/mldsutils/mldsutils.html#run_regressors"><code>run_regressors</code></a> function<a class="anchor-link" href="#A-test-of-running-the-run_regressors-function"> </a></h2><p>This cell will be used by <code>nbdev</code> for testing</p>
-
-</div>
-</div>
-</div>
 </div>
  
 

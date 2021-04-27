@@ -35,6 +35,23 @@ from sklearn.neural_network import MLPRegressor
 
 # Cell
 def rename_duplicates(old):
+    """
+    ### Description:
+
+    A simple helper function to add numeric suffix to duplicate string entries.
+
+    ### Example:
+    ```
+    for w in rename_duplicates(['Atom','Electron','Atom','Neutron','Atom']):
+        print(w)
+
+    >> Atom
+       Electron
+       Atom_1
+       Neutron
+       Atom_2
+    ```
+    """
     seen = {}
     for x in old:
         if x in seen:
